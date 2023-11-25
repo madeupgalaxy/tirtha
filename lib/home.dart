@@ -28,8 +28,10 @@ class _HomePageState extends State<HomePage> {
               TypewriterAnimatedText(
                 'Tirtha',
                 textStyle: const TextStyle(
-                  fontSize: 32.0,
+                  fontFamily: 'Samarkan',
+                  fontSize: 36.0,
                   fontWeight: FontWeight.bold,
+                  color: Colors.orangeAccent,
                 ),
                 speed: const Duration(milliseconds: 200),
               ),
