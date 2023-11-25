@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tirtha/pages/welcome.dart';
 
 import 'home.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: HomePage(),
+      home: Welcomepage(),
       debugShowCheckedModeBanner: false,
     );
   }

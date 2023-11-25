@@ -11,7 +11,16 @@ class _WelcomepageState extends State<Welcomepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView.builder(itemBuilder: (_, index) {}),
+      backgroundColor: Color.fromARGB(255, 255, 249, 241),
+      body: SafeArea(
+          child: Column(
+        children: [
+          Image.asset(
+            "assets/Backgrounds/tirthalogo.png",
+            height: 250,
+          )
+        ],
+      )),
     );
   }
 }
