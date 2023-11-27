@@ -8,13 +8,14 @@ class MainHomePage extends StatefulWidget {
 }
 
 class _MainHomePageState extends State<MainHomePage> {
+  bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 249, 241),
+      backgroundColor: const Color.fromARGB(255, 255, 249, 241),
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: <Widget>[
               Container(
@@ -22,7 +23,7 @@ class _MainHomePageState extends State<MainHomePage> {
                 height: 250,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                         image:
                             AssetImage('assets/Backgrounds/vaishno-devi.jpg'),
                         fit: BoxFit.cover)),
@@ -30,7 +31,7 @@ class _MainHomePageState extends State<MainHomePage> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Column(
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       SizedBox(
@@ -43,30 +44,53 @@ class _MainHomePageState extends State<MainHomePage> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: double.infinity,
-                height: 100, // Set the height according to your requirements
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(
-                      255, 250, 238, 222), // Set the background color
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(
-                  child: Text(
-                    'Second Container',
-                    style: TextStyle(
-                      color: const Color.fromARGB(255, 23, 22, 22),
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ),
+              const SizedBox(
+                  height: 20), // Add some space between the two containers
+              ExpandableContainer(
+                  isExpanded: isExpanded,
+                  onTap: () {
+                    setState(() {
+                      isExpanded = !isExpanded;
+                    });
+                  }),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ExpandableContainer extends StatelessWidget {
+  final bool isExpanded;
+  final VoidCallback onTap;
+
+  ExpandableContainer({required this.isExpanded, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Some information goes here...',
+            // Show different content based on the expanded state
+            overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
+            maxLines: isExpanded ? null : 2,
+          ),
+          GestureDetector(
+            onTap: onTap,
+            child: Text(
+              isExpanded ? 'Less' : 'More',
+              style: const TextStyle(
+                color: Colors.orange,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

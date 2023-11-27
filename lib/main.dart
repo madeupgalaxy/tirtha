@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tirtha/home.dart';
 import 'package:tirtha/pages/welcome.dart';
 
 void main() {
