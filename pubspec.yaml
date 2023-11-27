@@ -54,6 +54,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   flutter_dotenv: ^5.0.2
   velocity_x: ^3.6.0
+  simple_animations: ^5.0.2
   
 
 # For information on the generic Dart part of this file, see the
@@ -71,6 +72,7 @@ flutter:
   assets:
     - assets/Backgrounds/Logo_Tirtha.png
     - assets/Icons/arrow-right.png
+    - assets/Backgrounds/vaishno-devi.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
