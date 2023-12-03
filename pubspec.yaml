@@ -55,6 +55,7 @@ dev_dependencies:
   flutter_dotenv: ^5.0.2
   velocity_x: ^3.6.0
   simple_animations: ^5.0.2
+  google_maps_flutter: ^2.5.0
   
 
 # For information on the generic Dart part of this file, see the
@@ -73,6 +74,14 @@ flutter:
     - assets/Backgrounds/Logo_Tirtha.png
     - assets/Icons/arrow-right.png
     - assets/Backgrounds/vaishno-devi.jpg
+    - assets/Backgrounds/entrygate.jpg
+    - assets/Backgrounds/banganga.jpg
+    - assets/Backgrounds/Charan-Paduka.jpg
+    - assets/Backgrounds/ardhkuwari-mata-gufa-a.jpg
+    - assets/Backgrounds/bhairomandir.jpg
+    
+
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

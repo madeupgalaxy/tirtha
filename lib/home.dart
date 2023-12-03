@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flutter/rendering.dart';
 import 'package:tirtha/pages/chatbox.dart';
 import 'package:tirtha/pages/locations.dart';
 import 'package:tirtha/pages/mainhomepage.dart';
+import 'package:tirtha/pages/maps.dart';
+import 'package:tirtha/pages/settings.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,46 +19,81 @@ class _HomePageState extends State<HomePage> {
     MainHomePage(),
     Locations(),
     Chatbox(),
+    MapPage(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 255, 249, 241),
-          title: AnimatedTextKit(
-            animatedTexts: [
-              TypewriterAnimatedText(
-                'Tirtha',
-                textStyle: const TextStyle(
-                  fontFamily: 'Samarkan',
-                  fontSize: 36.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.orangeAccent,
+        backgroundColor: Color.fromARGB(255, 255, 249, 241),
+        title: AnimatedTextKit(
+          animatedTexts: [
+            TypewriterAnimatedText(
+              'Tirtha',
+              textStyle: const TextStyle(
+                fontFamily: 'Samarkan',
+                fontSize: 36.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.orangeAccent,
+              ),
+              speed: const Duration(milliseconds: 200),
+            ),
+          ],
+          totalRepeatCount: 1,
+          displayFullTextOnTap: true,
+          stopPauseOnTap: true,
+        ),
+        centerTitle: true,
+        actions: [
+          GestureDetector(
+            onTap: () {
+              // Navigate to the SettingsPage with slide animation
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) {
+                    return SettingsPage();
+                  },
+                  transitionsBuilder: (
+                    context,
+                    animation,
+                    secondaryAnimation,
+                    child,
+                  ) {
+                    const begin = Offset(0.0, -1.0);
+                    const end = Offset.zero;
+                    var tween = Tween(begin: begin, end: end);
+                    var offsetAnimation = animation.drive(
+                      Tween(begin: begin, end: end).chain(
+                        CurveTween(
+                          curve: Curves.easeInOut,
+                        ),
+                      ),
+                    );
+                    return SlideTransition(
+                      position: offsetAnimation,
+                      child: child,
+                    );
+                  },
                 ),
-                speed: const Duration(milliseconds: 200),
+              );
+            },
+            child: Container(
+              margin: const EdgeInsets.all(10),
+              width: 30,
+              height: 30,
+              decoration: BoxDecoration(
+                color: Colors.orangeAccent,
+                borderRadius: BorderRadius.circular(10),
               ),
-            ],
-            totalRepeatCount: 1,
-            // pause: Durations.extralong1,
-            displayFullTextOnTap: true,
-            stopPauseOnTap: true,
+              child: const Icon(Icons.settings,
+                  color: Color.fromARGB(255, 255, 249, 240)),
+            ),
           ),
-          centerTitle: true,
-          actions: [
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                margin: const EdgeInsets.all(10),
-                width: 30,
-                height: 30,
-                decoration: BoxDecoration(
-                    color: Colors.orangeAccent,
-                    borderRadius: BorderRadius.circular(10)),
-                child: const Icon(Icons.settings,
-                    color: Color.fromARGB(255, 255, 249, 240)),
-              ),
-            )
-          ]),
+        ],
+      ),
       body: Stack(
         children: [
           _tabList.elementAt(_pageIndex),
@@ -68,24 +104,29 @@ class _HomePageState extends State<HomePage> {
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(30)),
                 child: BottomNavigationBar(
-                  selectedItemColor: Colors.white,
-                  unselectedItemColor: Color.fromARGB(255, 37, 37, 37),
+                  type: BottomNavigationBarType.fixed,
+                  selectedItemColor: Color.fromARGB(255, 255, 255, 255),
+                  unselectedItemColor: Color.fromARGB(255, 248, 226, 198),
                   showSelectedLabels: true,
-                  showUnselectedLabels: false,
-                  backgroundColor: Colors.orangeAccent,
+                  showUnselectedLabels: true,
+                  backgroundColor: Color.fromARGB(255, 248, 182, 95),
                   currentIndex: _pageIndex,
                   onTap: (int index) {
                     setState(() {
                       _pageIndex = index;
                     });
                   },
+                  selectedIconTheme: IconThemeData(size: 30),
+                  unselectedIconTheme: IconThemeData(size: 18),
                   items: [
                     BottomNavigationBarItem(
                         icon: Icon(Icons.home), label: 'Home'),
                     BottomNavigationBarItem(
-                        icon: Icon(Icons.map_outlined), label: 'Map'),
+                        icon: Icon(Icons.map_outlined), label: 'Places'),
                     BottomNavigationBarItem(
-                        icon: Icon(Icons.message), label: 'Message'),
+                        icon: Icon(Icons.message), label: 'Saarthi'),
+                    BottomNavigationBarItem(
+                        icon: Icon(Icons.location_city), label: 'Guide'),
                   ],
                 ),
               ),

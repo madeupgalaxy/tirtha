@@ -9,6 +9,8 @@ class MainHomePage extends StatefulWidget {
 
 class _MainHomePageState extends State<MainHomePage> {
   bool isExpanded = false;
+  String information =
+      'Shri Mata Vaishno Devi Temple and Vaishno Devi Bhavan, is a Hindu temple dedicated to goddess Vaishno Devi, one of the major forms of the supreme goddess Adishakti. Shakta traditions consider the temple as one of the 52 Maha (major) Shakti Peethas dedicated to Durga.';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,15 +46,38 @@ class _MainHomePageState extends State<MainHomePage> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: double.infinity,
+                height: 30, // Set the height according to your requirements
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(
+                      255, 250, 238, 222), // Set the background color
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                  child: Text(
+                    'SHRI MATA VAISHNO DEVI',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 252, 160, 2),
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
               const SizedBox(
-                  height: 20), // Add some space between the two containers
+                  height: 10), // Add some space between the two containers
               ExpandableContainer(
-                  isExpanded: isExpanded,
-                  onTap: () {
-                    setState(() {
-                      isExpanded = !isExpanded;
-                    });
-                  }),
+                isExpanded: isExpanded,
+                onTap: () {
+                  setState(() {
+                    isExpanded = !isExpanded;
+                  });
+                },
+                information: information,
+              ),
             ],
           ),
         ),
@@ -64,33 +89,46 @@ class _MainHomePageState extends State<MainHomePage> {
 class ExpandableContainer extends StatelessWidget {
   final bool isExpanded;
   final VoidCallback onTap;
+  final String information;
 
-  ExpandableContainer({required this.isExpanded, required this.onTap});
+  ExpandableContainer({
+    required this.isExpanded,
+    required this.onTap,
+    required this.information,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Some information goes here...',
-            // Show different content based on the expanded state
-            overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
-            maxLines: isExpanded ? null : 2,
-          ),
-          GestureDetector(
-            onTap: onTap,
-            child: Text(
-              isExpanded ? 'Less' : 'More',
-              style: const TextStyle(
-                color: Colors.orange,
-                fontWeight: FontWeight.bold,
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Color.fromARGB(255, 250, 238, 222), // Set the background color
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              information,
+              overflow:
+                  isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
+              maxLines: isExpanded ? null : 2,
+            ),
+            GestureDetector(
+              onTap: onTap,
+              child: Text(
+                isExpanded ? 'Less' : 'More',
+                style: TextStyle(
+                  color: Colors.orange,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
