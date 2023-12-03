@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  PageController _pageController = PageController();
   int _pageIndex = 0;
   final List<Widget> _tabList = [
     MainHomePage(),
@@ -23,9 +24,16 @@ class _HomePageState extends State<HomePage> {
   ];
 
   @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      backgroundColor: Color.fromARGB(255, 255, 249, 241),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 255, 249, 241),
         title: AnimatedTextKit(
@@ -94,45 +102,47 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Stack(
-        children: [
-          _tabList.elementAt(_pageIndex),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Align(
-              alignment: Alignment(0.0, 1.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
-                child: BottomNavigationBar(
-                  type: BottomNavigationBarType.fixed,
-                  selectedItemColor: Color.fromARGB(255, 255, 255, 255),
-                  unselectedItemColor: Color.fromARGB(255, 248, 226, 198),
-                  showSelectedLabels: true,
-                  showUnselectedLabels: true,
-                  backgroundColor: Color.fromARGB(255, 248, 182, 95),
-                  currentIndex: _pageIndex,
-                  onTap: (int index) {
-                    setState(() {
-                      _pageIndex = index;
-                    });
-                  },
-                  selectedIconTheme: IconThemeData(size: 30),
-                  unselectedIconTheme: IconThemeData(size: 18),
-                  items: [
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.home), label: 'Home'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.map_outlined), label: 'Places'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.message), label: 'Saarthi'),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.location_city), label: 'Guide'),
-                  ],
-                ),
-              ),
-            ),
-          )
-        ],
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (index) {
+          setState(() {
+            _pageIndex = index;
+          });
+        },
+        children: _tabList,
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(30)),
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Color.fromARGB(255, 255, 255, 255),
+            unselectedItemColor: Color.fromARGB(255, 248, 226, 198),
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
+            backgroundColor: Color.fromARGB(255, 248, 182, 95),
+            currentIndex: _pageIndex,
+            onTap: (int index) {
+              _pageController.animateToPage(
+                index,
+                duration: Duration(milliseconds: 500),
+                curve: Curves.easeInOut,
+              );
+            },
+            selectedIconTheme: IconThemeData(size: 30),
+            unselectedIconTheme: IconThemeData(size: 18),
+            items: [
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.map_outlined), label: 'Places'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.message), label: 'Saarthi'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.location_city), label: 'Guide'),
+            ],
+          ),
+        ),
       ),
     );
   }

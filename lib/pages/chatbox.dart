@@ -48,7 +48,7 @@ class _ChatboxState extends State<Chatbox> {
 
   Widget _buildMessageInput() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 100.0, horizontal: 8.0),
+      padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 8.0),
       child: Row(
         children: [
           Expanded(
