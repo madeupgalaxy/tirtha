@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:tirtha/pages/locations/bhawan.dart';
+import 'package:tirtha/pages/locations/bhaironmandir.dart';
+import 'package:tirtha/pages/locations/banganga.dart';
+import 'package:tirtha/pages/locations/ardhkuwari.dart';
+import 'package:tirtha/pages/locations/charanpaduka.dart';
+import 'package:tirtha/pages/locations/Entrygate.dart';
 
 class Locations extends StatefulWidget {
   const Locations({super.key});
@@ -12,8 +18,10 @@ class _LocationsState extends State<Locations> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 255, 249, 240),
-        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      backgroundColor: Color.fromARGB(255, 255, 249, 240),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(
@@ -24,17 +32,21 @@ class _LocationsState extends State<Locations> {
                   RotateAnimatedText(
                     'प्रमुख स्थल',
                     textStyle: TextStyle(
-                        fontFamily: 'Samarkan',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
-                        color: Colors.orange),
+                      fontFamily: 'Samarkan',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.orange,
+                    ),
                   ),
-                  RotateAnimatedText('Places of Significance',
-                      textStyle: TextStyle(
-                          fontFamily: 'Samarkan',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                          color: Colors.orange)),
+                  RotateAnimatedText(
+                    'Places of Significance',
+                    textStyle: TextStyle(
+                      fontFamily: 'Samarkan',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.orange,
+                    ),
+                  ),
                 ],
                 onTap: () {
                   print("Tap Event");
@@ -45,40 +57,34 @@ class _LocationsState extends State<Locations> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Stack(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    width: double.infinity,
-                    height: 200.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                        image: AssetImage(
-                            'assets/Backgrounds/entrygate.jpg'), // Replace with your image path
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                  buildClickableContainer(
+                    imagePath: 'assets/Backgrounds/Entry_gate.jpg',
+                    title: 'Entry Gate',
+                    onTap: () {
+                      // Navigate to the Bhawan details page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EntryGate(),
+                        ),
+                      );
+                    },
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: 200.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.black
-                          .withOpacity(0.2), // Adjust the opacity as needed
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 20.0,
-                    left: 20.0,
-                    child: Text(
-                      'Entry Gate',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                  buildClickableContainer(
+                    imagePath: 'assets/Backgrounds/banganga.jpg',
+                    title: 'Ban Ganga',
+                    onTap: () {
+                      // Navigate to the Bhawan details page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BanGanga(),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -86,47 +92,31 @@ class _LocationsState extends State<Locations> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    width: 200.0,
-                    height: 150.0,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                              'assets/Backgrounds/banganga.jpg'), // Replace with your image path
-                          fit: BoxFit.cover,
+                  buildClickableContainer(
+                    imagePath: 'assets/Backgrounds/Charan-Paduka.jpg',
+                    title: 'Charan Paduka',
+                    onTap: () {
+                      // Navigate to the Bhawan details page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CharanPaduka(),
                         ),
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                      child: Text(
-                        'Ban Ganga',
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 254, 254, 141),
-                            fontSize: 26.0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Samarkan'),
-                      ),
-                    ),
+                      );
+                    },
                   ),
-                  Container(
-                    width: 200.0,
-                    height: 150.0,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                              'assets/Backgrounds/Charan-Paduka.jpg'), // Replace with your image path
-                          fit: BoxFit.cover,
+                  buildClickableContainer(
+                    imagePath: 'assets/Backgrounds/ardhkuwari-mata-gufa-a.jpg',
+                    title: 'ArdhKuwari',
+                    onTap: () {
+                      // Navigate to the Bhawan details page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ArdhKuwari(),
                         ),
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                      child: Text(
-                        'Charan Paduka',
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 62),
-                            fontSize: 26.0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Samarkan'),
-                      ),
-                    ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -134,53 +124,93 @@ class _LocationsState extends State<Locations> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    width: 200.0,
-                    height: 150.0,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                              'assets/Backgrounds/ardhkuwari-mata-gufa-a.jpg'), // Replace with your image path
-                          fit: BoxFit.cover,
+                  buildClickableContainer(
+                    imagePath: 'assets/Backgrounds/Bhawan.jpeg',
+                    title: 'Bhawan',
+                    onTap: () {
+                      // Navigate to the Bhawan details page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BhawanDetailsPage(),
                         ),
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                      child: Text(
-                        'ArdhKuwari',
-                        style: TextStyle(
-                            color: const Color.fromARGB(255, 255, 237, 213),
-                            fontSize: 26.0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Samarkan'),
-                      ),
-                    ),
+                      );
+                    },
                   ),
-                  Container(
-                    width: 200.0,
-                    height: 150.0,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                              'assets/Backgrounds/bhairomandir.jpg'), // Replace with your image path
-                          fit: BoxFit.cover,
+                  buildClickableContainer(
+                    imagePath: 'assets/Backgrounds/bhairomandir.jpg',
+                    title: 'Bhairon Mandir',
+                    onTap: () {
+                      // Navigate to the Bhawan details page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BhaironMandir(),
                         ),
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                      child: Text(
-                        'Bhairon Mandir',
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontSize: 26.0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Samarkan'),
-                      ),
-                    ),
+                      );
+                    },
                   ),
                 ],
               ),
               SizedBox(height: 10.0),
             ],
-          )
-        ]));
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class buildClickableContainer extends StatelessWidget {
+  final String imagePath;
+  final String title;
+  final Function()? onTap;
+
+  buildClickableContainer({
+    required this.imagePath,
+    required this.title,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Stack(
+        children: [
+          Container(
+            width: 200.0,
+            height: 150.0,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(imagePath),
+                fit: BoxFit.cover,
+              ),
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+          Container(
+            width: 200.0,
+            height: 150.0,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.black.withOpacity(0.2),
+            ),
+          ),
+          Positioned(
+            bottom: 20.0,
+            left: 20.0,
+            child: Text(
+              title,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
