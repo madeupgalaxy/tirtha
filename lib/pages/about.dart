@@ -4,6 +4,7 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 255, 249, 240),
       appBar: AppBar(
         title: Text('About'),
         backgroundColor: Color.fromARGB(255, 255, 249, 240),

@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
             onTap: (int index) {
               _pageController.animateToPage(
                 index,
-                duration: Duration(milliseconds: 500),
+                duration: Duration(milliseconds: 150),
                 curve: Curves.easeInOut,
               );
             },
