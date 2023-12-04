@@ -18,67 +18,138 @@ class _MainHomePageState extends State<MainHomePage> {
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: <Widget>[
-              Container(
-                width: double.infinity,
-                height: 250,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    image: const DecorationImage(
-                        image:
-                            AssetImage('assets/Backgrounds/vaishno-devi.jpg'),
-                        fit: BoxFit.cover)),
-                child: Container(
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  width: double.infinity,
+                  height: 250,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      SizedBox(
-                        height: 30,
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: double.infinity,
-                height: 30, // Set the height according to your requirements
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(
-                      255, 250, 238, 222), // Set the background color
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(
-                  child: Text(
-                    'SHRI MATA VAISHNO DEVI',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 252, 160, 2),
-                      fontSize: 20,
+                      borderRadius: BorderRadius.circular(20),
+                      image: const DecorationImage(
+                          image:
+                              AssetImage('assets/Backgrounds/vaishno-devi.jpg'),
+                          fit: BoxFit.cover)),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        SizedBox(
+                          height: 30,
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                  height: 10), // Add some space between the two containers
-              ExpandableContainer(
-                isExpanded: isExpanded,
-                onTap: () {
-                  setState(() {
-                    isExpanded = !isExpanded;
-                  });
-                },
-                information: information,
-              ),
-            ],
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 30, // Set the height according to your requirements
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(
+                        255, 250, 238, 222), // Set the background color
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'SHRI MATA VAISHNO DEVI',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 252, 160, 2),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                    height: 10), // Add some space between the two containers
+                ExpandableContainer(
+                  isExpanded: isExpanded,
+                  onTap: () {
+                    setState(() {
+                      isExpanded = !isExpanded;
+                    });
+                  },
+                  information: information,
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                  width: double.infinity,
+                  height: 100.0,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 250, 238, 222),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Live Aarti',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.orange,
+                        fontSize: 26),
+                  )),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                  width: double.infinity,
+                  height: 100.0,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 250, 238, 222),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Yatra Parchi',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.orange,
+                        fontSize: 26),
+                  )),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                  width: double.infinity,
+                  height: 100.0,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 250, 238, 222),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Accomodation',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.orange,
+                        fontSize: 26),
+                  )),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                  width: double.infinity,
+                  height: 100.0,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 250, 238, 222),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Donation',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.orange,
+                        fontSize: 26),
+                  )),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -102,7 +173,7 @@ class ExpandableContainer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Container(
-        width: double.infinity,
+        width: 550,
         decoration: BoxDecoration(
           color: Color.fromARGB(255, 250, 238, 222), // Set the background color
           borderRadius: BorderRadius.circular(10),
@@ -115,6 +186,7 @@ class ExpandableContainer extends StatelessWidget {
               overflow:
                   isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
               maxLines: isExpanded ? null : 2,
+              style: TextStyle(fontSize: 16),
             ),
             GestureDetector(
               onTap: onTap,

@@ -19,7 +19,7 @@ class _WelcomepageState extends State<Welcomepage> {
             children: [
               const Spacer(),
               Image.asset(
-                "assets/Backgrounds/tirthalogo.png",
+                "assets/Backgrounds/Logo_Tirtha.png",
                 height: 250,
               ),
               Text(

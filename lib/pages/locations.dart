@@ -63,28 +63,10 @@ class _LocationsState extends State<Locations> {
                   buildClickableContainer(
                     imagePath: 'assets/Backgrounds/Entry_gate.jpg',
                     title: 'Entry Gate',
-                    onTap: () {
-                      // Navigate to the Bhawan details page
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => EntryGate(),
-                        ),
-                      );
-                    },
                   ),
                   buildClickableContainer(
                     imagePath: 'assets/Backgrounds/banganga.jpg',
                     title: 'Ban Ganga',
-                    onTap: () {
-                      // Navigate to the Bhawan details page
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BanGanga(),
-                        ),
-                      );
-                    },
                   ),
                 ],
               ),
@@ -100,7 +82,7 @@ class _LocationsState extends State<Locations> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CharanPaduka(),
+                          builder: (context) => BhawanDetailsPage(),
                         ),
                       );
                     },
@@ -113,7 +95,7 @@ class _LocationsState extends State<Locations> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ArdhKuwari(),
+                          builder: (context) => BhawanDetailsPage(),
                         ),
                       );
                     },
@@ -138,18 +120,17 @@ class _LocationsState extends State<Locations> {
                     },
                   ),
                   buildClickableContainer(
-                    imagePath: 'assets/Backgrounds/bhairomandir.jpg',
-                    title: 'Bhairon Mandir',
-                    onTap: () {
-                      // Navigate to the Bhawan details page
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BhaironMandir(),
-                        ),
-                      );
-                    },
-                  ),
+                      imagePath: 'assets/Backgrounds/bhairomandir.jpg',
+                      title: 'Bhairon Mandir',
+                      onTap: () {
+                        // Navigate to the Bhairon Mandir details page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BhaironMandir(),
+                          ),
+                        );
+                      }),
                 ],
               ),
               SizedBox(height: 10.0),
