@@ -20,8 +20,8 @@ Every year, millions of pilgrims embark on a spiritual journey to Shri Mata
  The path spans approximately 14 km and is often trodden by devotees who
  are unfamiliar with the region, its customs, and the many facilities available on route.
  
-## `Key Features`
-> 🌐Map Guide: The app helps guide user on the pilgrimage path.
+## `Key Features` (under development)
+> 🌐Map Guide: The app helps guide user on the pilgrimage path. 
 >
 > 🎆Cultural information: Information about the various points of significance on the pilgrimage path, such as temples, shrines, and natural landmarks. 
 >
