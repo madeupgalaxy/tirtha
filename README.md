@@ -30,3 +30,11 @@ Every year, millions of pilgrims embark on a spiritual journey to Shri Mata
 >🍶Basic needs: List of nearby accommodation and food options, along with their prices and ratings. It can also allow the user to book accommodation and meals in advance.
 >
 > 💬Community interaction: A forum or chat feature where users can share their experiences, ask questions, and offer support to each other.
+
+
+Here's a video of Tirtha: 
+
+
+
+https://github.com/madeupgalaxy/tirtha/assets/118007944/129e112e-b126-47f8-b274-98bf82cb0e0d
+
