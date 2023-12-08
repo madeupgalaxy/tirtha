@@ -4,7 +4,6 @@
 
   <h1>Welcome to Tirtha!</h1>
   <i>Your sacred pilgrimage, simplified and enriched. (Powered by Flutter🌟).</i>
-  <i>Show some ❤️ and ⭐ the repo. (Powered by Flutter🌟).</i>
 </div>
 
 ## `About Tirtha`
@@ -34,6 +33,7 @@ Every year, millions of pilgrims embark on a spiritual journey to Shri Mata
 
 
 Here's a video of Tirtha: 
+>Show some ❤️ and ⭐ the repo.
 
 
 
